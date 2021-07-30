@@ -41,3 +41,10 @@ elif model_selection == "Random Forest":
     random_forest.output(X_test, y_test)
 else:
     neural_network.output(X_test_norm, y_test)
+
+st.header("Contact Me")
+st.write("""
+Please feel free to contact me if you have any questions or have spotted an error:
+""")
+st.write("Email: calvin.kory@gmail.cpm")
+st.write("GitHub: https://github.com/itscal123")
