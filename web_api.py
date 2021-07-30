@@ -46,5 +46,5 @@ st.header("Contact Me")
 st.write("""
 Please feel free to contact me if you have any questions or have spotted an error:
 """)
-st.write("Email: calvin.kory@gmail.cpm")
+st.write("Email: calvin.kory@gmail.com")
 st.write("GitHub: https://github.com/itscal123")
