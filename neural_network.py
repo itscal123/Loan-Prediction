@@ -24,7 +24,7 @@ def output(X_test, y_test):
     """)
 
     st.write("*Architecture of our model*")
-    mlp = Image.open("images\mlp.jpeg")
+    mlp = Image.open("mlp.jpeg")
     st.image(mlp, caption="Input Layer: 14 nodes; Hidden Layer 1: 64 nodes; Hidden Layer 2: 32 nodes; Output Layer: 1 node")
 
     st.write("""
@@ -44,7 +44,7 @@ def output(X_test, y_test):
     """)
 
     st.write("*Rectified Linear Unit*")
-    relu = Image.open('images\\relu.png')
+    relu = Image.open('relu.png')
     st.image(relu, caption="Note that function is undifferentiable at 0, which empirically is not a problem.")
 
     st.subheader("Training")

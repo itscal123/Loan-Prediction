@@ -78,7 +78,7 @@ def output(X_test, X_test_reduced, y_test):
     is best understood through an example. Consider the following clustering:
     """)
 
-    knn = Image.open("images\knn_image.png")
+    knn = Image.open("knn_image.png")
     st.image(knn, caption="Note that as we decrease k, our classification of the query points changes.")
     
     st.write("""
@@ -111,58 +111,42 @@ def output(X_test, X_test_reduced, y_test):
         "Select power parameter for the Minkowski metric",
         options=[1, 2])
     
+
     st.write("""
-    With the selected parameters here is final score evaluated on the test set
-    """)
-    with open("pickled_models\knn{}_{}_{}.pkl".format(n_neighbors, weights, p), "rb") as f:
-        model = pickle.load(f)
-    score = model.score(X_test, y_test) 
-    st.write(score)
-    st.write("""
-    Note, that regardless of paramers, KNN performs very poorly. Furthermore, regardless of parameter tuning, 
-    all the final scores seem to be roughly the same. These scores highlights the weakness of the KNN
+    Note, that regardless of parameters, KNN performs very poorly and converges slowly. This alludes to the weakness of the KNN
     algorithm: the curse of dimensionality. The good news is that this can be alleviated through the 
     principal component analysis (PCA) technique.
     """)
 
-    pca = st.checkbox("Enable PCA")
-    if pca:
-        st.subheader("Principal Component Analysis (PCA)")
-        st.write("""
-        One of the most popular dimensionality reduction algorithms. PCA first identifies the hyperplane that lies closest to the data,
-        and then it projects the data onto it.
-        """)
+    st.subheader("Principal Component Analysis (PCA)")
+    st.write("""
+    One of the most popular dimensionality reduction algorithms. PCA first identifies the hyperplane that lies closest to the data,
+    and then it projects the data onto it.
+    """)
         
-        st.write("""Note that in order to project the training set onto a lower-dimensional hyperplane, we need to choose the correct hyperplane
-        (i.e., the hyperplane that preserves the maximum variance). PCA performs this by finding the an orthogonal hyperplane
-        that maximizes variance. This procedure is performed over up to n times which yields the nth axis order
-        nth principal component (PC) of the data. We can then project down to some d dimensions.
-        """)
+    st.write("""Note that in order to project the training set onto a lower-dimensional hyperplane, we need to choose the correct hyperplane
+    (i.e., the hyperplane that preserves the maximum variance). PCA performs this by finding the an orthogonal hyperplane
+    that maximizes variance. This procedure is performed over up to n times which yields the nth axis order
+    nth principal component (PC) of the data. We can then project down to some d dimensions.
+    """)
 
-        st.write("""
-        Consider the following image which visualizes the selection of an orthognal axis or principal
-        component that maximizes the variance of the data. 
-        """)
-        st.pyplot(pca_plot())
+    st.write("""
+    Consider the following image which visualizes the selection of an orthognal axis or principal
+    component that maximizes the variance of the data. 
+    """)
+    st.pyplot(pca_plot())
 
-        st.write("""
-        By incorporating PCA, we can reduce the dimensionality of the training data, which allows KNN to converge to a better
-        solution due to the intrinsic reduction is sample space that comes along with dimensionality reduction. In fact, by incorporating
-        PCA with the above parameters our final score on the test set increases to
-        """)
+    st.write("""
+    By incorporating PCA, we can reduce the dimensionality of the training data, which allows KNN to converge to a better
+    solution due to the intrinsic reduction is sample space that comes along with dimensionality reduction. In fact, by incorporating
+    PCA with the above parameters our final score on the test set is
+    """)
         
-        with open("pickled_models\knn_pca{}_{}_{}.pkl".format(n_neighbors, weights, p), "rb") as f:
-            pca_model = pickle.load(f)
-        st.write("*Parameters: k = {}, weight = {}, Minkoski metric = {}*".format(n_neighbors, weights, p))
-        st.write(pca_model.score(X_test_reduced, y_test))
-        st.write("vs")
-        st.write(score)
+    with open("knn_pca{}_{}_{}.pkl".format(n_neighbors, weights, p), "rb") as f:
+        pca_model = pickle.load(f)
+    st.write("*Parameters: k = {}, weight = {}, Minkoski metric = {}*".format(n_neighbors, weights, p))
+    st.write(pca_model.score(X_test_reduced, y_test))
 
-        st.write("""\
-        Here we see PCA at work as we significantly increase the predictive power of our model. Additionally, the use of PCA also significantly
-        reduced the time it took to train the new models. Furthermore, the use of PCA allowed for the parameters of the KNN algorithm
-        to have a more significant impact on the quality of model's predictive power.
-        """)
     
     st.subheader("Strengths and Weaknesses of K-Nearest Neighbors")
     st.write("""

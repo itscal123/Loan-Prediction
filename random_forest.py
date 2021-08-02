@@ -11,7 +11,7 @@ def output(X_test, y_test):
     we hit a leaf node (has no children so cannot continue). In many ways, you could imagine a decision tree as a combination of many if/else statements. In two dimensions,
     we can visualize each branch as a decision boundary. Consider the following image that splits the data for each traversal down the tree. 
     """)
-    random_forest = Image.open("images\Decision_Tree.png")
+    random_forest = Image.open("Decision_Tree.png")
     st.image(random_forest, caption="Decision Tree on whether one should play tennis")
 
     st.subheader("Estimating Class Probabilities")
@@ -70,7 +70,7 @@ def output(X_test, y_test):
     estimators = st.radio("Select number of estimators", options=[100, 250, 500])
     criterion = st.radio("Select criterion", options=("Gini Impurity", "Entropy"))
     st.write("Using the above parameters, the model achieves the following score on the test set")
-    with open("pickled_models\\random_forest{}_{}.pkl".format(estimators, "gini" if criterion=="Gini Impurity" else "Entropy"), "rb") as f:
+    with open("random_forest{}_{}.pkl".format(estimators, "gini" if criterion=="Gini Impurity" else "Entropy"), "rb") as f:
         model = pickle.load(f)
     st.write(model.score(X_test, y_test))
 

@@ -123,7 +123,7 @@ def output(X_test, y_test):
         equivalent to the log-prior term that is maximized by maximum a posteriori (MAP) Bayesian inference with an 
         isotropic Laplace prior. Using L1 regularization we achieve the following score on our test set.
         """)
-        with open("pickled_models\logit_l1.pkl", "rb") as f:
+        with open("logit_l1.pkl", "rb") as f:
             model = pickle.load(f)
         st.write(model.score(X_test, y_test)) 
         st.write("""
@@ -148,7 +148,7 @@ def output(X_test, y_test):
         regularization is equivalent to maximum a posteriori (MAP) Bayesian inference with a Gaussian prior 
         on the weights. Using L2 regularization we achieve the following score on our test set.
         """)
-        with open("pickled_models\logit_l2.pkl", "rb") as f:
+        with open("logit_l2.pkl", "rb") as f:
             model = pickle.load(f)
         st.write(model.score(X_test, y_test))
         st.write("""

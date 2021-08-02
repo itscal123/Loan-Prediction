@@ -59,7 +59,7 @@ def output(X_test, y_test):
     st.write("""
     After training on the train set, the score our Naive Bayes classifier makes on the test set is
     """)
-    with open("pickled_models\\naive_bayes.pkl", "rb") as f:
+    with open("naive_bayes.pkl", "rb") as f:
         model = pickle.load(f)
     st.write(model.score(X_test, y_test))
 
