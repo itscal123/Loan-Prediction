@@ -33,7 +33,7 @@ with open("test.pkl", "rb") as f:
 with open("reduced_test.pkl", "rb") as f:
     X_test_reduced = pickle.load(f)
 
-with open("reduced_test.pkl", "rb") as f:
+with open("norm_test.pkl", "rb") as f:
     X_test_norm = pickle.load(f)
 
 with open("y_test.pkl", "rb") as f:
