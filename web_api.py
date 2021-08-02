@@ -7,6 +7,7 @@ import neural_network
 import text
 import numpy as np
 import pandas as pd
+import pickle
 
 # Dataframe of the categories and their descriptions
 variables = pd.DataFrame({
@@ -26,18 +27,17 @@ variables = pd.DataFrame({
                         "Charged-off amount", "Gross amount approved by bank","SBA's guaranteed amount of approved loan"]
 })
 
-with open("test.npy", "rb") as f:
-    X_test = np.load(f)
+with open("test.pkl", "rb") as f:
+    X_test = pickle.load(f)
 
-with open("reduced_test.npy", "rb") as f:
-    X_test_norm = np.load(f)
+with open("reduced_test.pkl", "rb") as f:
+    X_test_reduced = pickle.load(f)
 
-with open("reduced_test.npy", "rb") as f:
-    X_test_reduced = np.load(f)
+with open("reduced_test.pkl", "rb") as f:
+    X_test_norm = pickle.load(f)
 
-with open("y_test.npy", "rb") as f:
-    y_test = np.load(f)
-
+with open("y_test.pkl", "rb") as f:
+    y_test = pickle.load(f)
 
 text.title()
 text.welcome()
