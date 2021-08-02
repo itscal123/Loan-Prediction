@@ -6,6 +6,7 @@ import naive_bayes
 import neural_network
 import text
 import numpy as np
+import pandas as pd
 
 # Dataframe of the categories and their descriptions
 variables = pd.DataFrame({
