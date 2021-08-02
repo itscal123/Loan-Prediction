@@ -26,13 +26,13 @@ variables = pd.DataFrame({
                         "Charged-off amount", "Gross amount approved by bank","SBA's guaranteed amount of approved loan"]
 })
 
-with open("test.npy", "wb") as f:
+with open("test.npy", "rb") as f:
     X_test = np.load(f)
 
-with open("reduced_test.npy", "wb") as f:
+with open("reduced_test.npy", "rb") as f:
     X_test_norm = np.load(f)
 
-with open("reduced_test.npy", "wb") as f:
+with open("reduced_test.npy", "rb") as f:
     X_test_reduced = np.load(f)
 
 
