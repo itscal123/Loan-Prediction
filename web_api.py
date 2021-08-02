@@ -35,6 +35,9 @@ with open("reduced_test.npy", "rb") as f:
 with open("reduced_test.npy", "rb") as f:
     X_test_reduced = np.load(f)
 
+with open("y_test.npy", "rb") as f:
+    y_test = np.load(f)
+
 
 text.title()
 text.welcome()
