@@ -5,4 +5,4 @@ The project is a simple web application that compares the performance between di
 a look and let me know what you think! 
 
 Here's the link to the app.
-https://share.streamlit.io/itscal123/loan-prediction/main/web_api.py
+https://share.streamlit.io/itscal123/loan-prediction-analysis/main/web_api.py
